@@ -122,13 +122,14 @@ public class QsAlignMain implements Serializable {
 				alignParams);
 
 		// Header plus values in two columns
-		output.write("Query\tTarget\tRelation\tChainLength\t\tRMSD\tResidueLength\t");
+		output.write("Query\tTarget\tRelation\tChainLength\tRMSD\tTM-score\tResidueLength\t");
 		output.write("[Aligned-Query]\t[Aligned-Target]\t[Query-Target:OrientationAngle]\n");
 		output.write(query.getStructureIdentifier().getIdentifier() + "\t");
 		output.write(target.getStructureIdentifier().getIdentifier() + "\t");
 		output.write(result.getRelation() + "\t");
 		output.write(result.length() + "\t");
 		output.write(String.format("%.2f\t", result.getRmsd()));
+		output.write(String.format("%.2f\t", result.getTmScore()));
 		output.write(result.getAlignment().length() + "\t");
 		output.write(result.getAlignedSubunits1().stream()
 				.map(Subunit::getName).collect(Collectors.toList())
