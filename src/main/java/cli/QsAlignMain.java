@@ -130,7 +130,7 @@ public class QsAlignMain implements Serializable {
 		output.write(result.length() + "\t");
 		output.write(String.format("%.2f\t", result.getRmsd()));
 		output.write(String.format("%.2f\t", result.getTmScore()));
-		output.write(result.getAlignment().length() + "\t");
+		output.write(result.getAlignment()==null?"0":result.getAlignment().length() + "\t");
 		output.write(result.getAlignedSubunits1().stream()
 				.map(Subunit::getName).collect(Collectors.toList())
 				+ "\t");
